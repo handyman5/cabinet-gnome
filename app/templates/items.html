@@ -1,0 +1,17 @@
+{% block title %}<h1>Items</h1>{% endblock %}
+
+<a href="{{ url_for('.index') }}"><i>Return</i></a>
+
+{% block content %}
+{% for item in object_list %}
+<p>
+  <a href="{{ url_for('.edit_item', item_id=item.id) }}">{{item.name}}</a>
+</p>
+<ul>
+  <li>Store: {{ item.store }}</li>
+  <li>Perishable: {{ item.perishable }}</li>
+  <li>Last Purchased: {{ item.last_purchased.strftime('%m/%d/%y') }}</li>
+  <li>Times Purchased: {{ item.times_purchased }}</li>
+</ul>
+{% endfor %}
+{% endblock %}
